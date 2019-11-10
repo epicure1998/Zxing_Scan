@@ -24,34 +24,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scan_btn=(Button)findViewById(R.id.scan_btn);
-        qr_btn=(Button)findViewById(R.id.qr_btn);
         final Activity activity=this;
         scan_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
             {
-                //  ONE_D_CODE_TYPES：一维码，QR_CODE_TYPES-二维码
-                IntentIntegrator integrator=new IntentIntegrator(activity);integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES );
-                integrator.setPrompt("二维码扫描开始");
+                IntentIntegrator integrator=new IntentIntegrator(activity);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES );
+                integrator.setPrompt("QRCode Scanning ...");
                 integrator.setCameraId(0);//0是使用默认相机
                 integrator.setBeepEnabled(true);//扫描后的提示音
                 integrator.setBarcodeImageEnabled(false);//？
-                integrator.initiateScan();
             }
         });
-        qr_btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view)
-            {
-                //  ONE_D_CODE_TYPES：一维码，QR_CODE_TYPES-二维码
-                IntentIntegrator integrator=new IntentIntegrator(activity);integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES );
-                integrator.setPrompt("条形码扫描开始");
-                integrator.setCameraId(0);//0是使用默认相机
-                integrator.setBeepEnabled(true);//扫描后的提示音
-                integrator.setBarcodeImageEnabled(false);//？
-                integrator.initiateScan();
-            }
-        });
+
 
     }
 
