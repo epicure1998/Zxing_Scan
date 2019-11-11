@@ -17,7 +17,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
     private Button scan_btn;
-    private Button qr_btn;
+    //private Button qr_btn;
     // private TextView textView=(TextView)findViewById(R.id.textView);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 integrator.setCameraId(0);//0是使用默认相机
                 integrator.setBeepEnabled(true);//扫描后的提示音
                 integrator.setBarcodeImageEnabled(false);//？
+                integrator.initiateScan();
             }
         });
 
