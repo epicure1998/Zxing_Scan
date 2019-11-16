@@ -17,14 +17,17 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
     private Button scan_btn;
+    private TextView textView;
     //private Button qr_btn;
     // private TextView textView=(TextView)findViewById(R.id.textView);
-    @Override
+    @Override//初始化界面
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scan_btn=(Button)findViewById(R.id.scan_btn);
         final Activity activity=this;
+        textView=(TextView)findViewById(R.id.textView);
+        textView.setText("Scaning data will be here");
         scan_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -51,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
             if (result.getContents() == null) {
                 Toast.makeText(this, "you cancelled the scanning", Toast.LENGTH_LONG).show();
             } else {
+                System.out.println("::"+result.getContents().toString());
                 Toast.makeText(this,"Successfully scanning"+ result.getContents() , Toast.LENGTH_LONG).show();
-                TextView textView=(TextView)findViewById(R.id.textView);
+                textView=(TextView)findViewById(R.id.textView);
                 CharSequence cs=result.getContents().subSequence(0, result.getContents().length());
                 textView.setText(cs);
 
