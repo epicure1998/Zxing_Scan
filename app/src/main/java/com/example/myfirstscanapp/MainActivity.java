@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
- 
+
 
 public class MainActivity extends AppCompatActivity {
     private Button scan_btn;
@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     // private TextView textView=(TextView)findViewById(R.id.textView);
     @Override//初始化界面
     protected void onCreate(Bundle savedInstanceState) {
+        CameraPositionControl cameraPositionControl = new CameraPositionControl(this.getApplicationContext());
+        cameraPositionControl.turnCameraOn();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scan_btn=(Button)findViewById(R.id.scan_btn);
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 integrator.setPrompt("QRCode Scanning ...");
                 integrator.setCameraId(0);//0是使用默认相机
                 integrator.setBeepEnabled(true);//扫描后的提示音
-                integrator.setBarcodeImageEnabled(false);//？
+                integrator.setBarcodeImageEnabled(false);
                 integrator.initiateScan();
             }
         });
